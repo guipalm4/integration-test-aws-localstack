@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-integration-test
+    ports:
+      - "4566:4566"  # Use the actual default ports for LocalStack
+      - "4571:4571"
+    environment:
+      - SERVICES=dynamodb,secretsmanager
+      - DEBUG=1
+    volumes:
+      - "./localstack:/var/lib/localstack"
